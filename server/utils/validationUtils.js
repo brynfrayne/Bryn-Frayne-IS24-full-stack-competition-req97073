@@ -1,31 +1,43 @@
 function validateProductFields(product) {
-    const { productName, productOwnerName, Developers, scrumMasterName, startDate, methodology } = product;
-
-    // Check that all required fields are present
-    if (!productName || !productOwnerName || !Developers || !scrumMasterName || !startDate || !methodology) {
+    if (!validateRequiredFields(product)) {
       return { success: false, message: 'Missing required fields' };
     }
 
-    // Check that the start date is in the right format
-    const dateRegex = /^\d{4}\/\d{2}\/\d{2}$/;
-    if (!dateRegex.test(startDate)) {
+    if (!validateStartDate(product.startDate)) {
       return { success: false, message: 'Start date must be in the format YYYY/MM/DD' };
     }
 
-    // Check that the methodology is one of the allowed values
-    const allowedMethodologies = ['Agile', 'Waterfall'];
-    if (!allowedMethodologies.includes(methodology)) {
+    if (!validateMethodology(product.methodology)) {
+      const allowedMethodologies = ['Agile', 'Waterfall'];
       return { success: false, message: `Methodology must be one of the following: ${allowedMethodologies.join(', ')}` };
     }
 
-    // Check that the list of developers is not empty
-    if (Developers.length === 0) {
+    if (!validateDevelopers(product.Developers)) {
       return { success: false, message: 'Must have at least one developer' };
     }
 
-    // If all validation checks pass, return success: true
     return { success: true };
   }
+
+  function validateRequiredFields(product) {
+    const { productName, productOwnerName, Developers, scrumMasterName, startDate, methodology } = product;
+    return !!productName && !!productOwnerName && !!Developers && !!scrumMasterName && !!startDate && !!methodology;
+  }
+
+  function validateStartDate(startDate) {
+    const dateRegex = /^\d{4}\/\d{2}\/\d{2}$/;
+    return dateRegex.test(startDate);
+  }
+
+  function validateMethodology(methodology) {
+    const allowedMethodologies = ['Agile', 'Waterfall'];
+    return allowedMethodologies.includes(methodology);
+  }
+
+  function validateDevelopers(developers) {
+    return developers.length > 0;
+  }
+
 
   function updateProductIfMatch(product, productId, data) {
     console.log(typeof product.productId, typeof productId)

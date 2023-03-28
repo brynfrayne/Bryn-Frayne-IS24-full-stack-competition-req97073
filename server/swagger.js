@@ -9,9 +9,17 @@ const options = {
       version: '1.0.0',
       description: 'A sample API documentation',
     },
+    servers: [
+      {
+        url: '/api',
+        description: 'Base API path',
+      },
+    ],
+    basePath: '/api', // specify the base path for Swagger documentation
   },
-  apis: ['./routes/*.js'], // replace this with the path to your route files
+  apis: ['./routes/*.js', './swagger_products.js'], // files containing annotations as above
 };
+
 const specs = swaggerJsdoc(options);
 
 module.exports = function (app) {

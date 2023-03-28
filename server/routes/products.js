@@ -13,13 +13,12 @@ router.get('/', (req, res) => {
     const products = JSON.parse(productsFile);
 
     // Return the list of products as a JSON response
-    res.json(products);
+    res.status(200).json(products);
   });
 
 // GET a list of products by scrum master name or developer name
 router.get('/search', (req, res) => {
-    console.log('searching');
-    console.log(req.query);
+
     const products = JSON.parse(productsFile);
     const { name, role } = req.query;
 
@@ -36,7 +35,11 @@ router.get('/search', (req, res) => {
     });
 
     // Return the filtered products as a JSON response
-    res.json(filteredProducts);
+    if (filteredProducts.length > 0) {
+        res.status(200).json(filteredProducts);
+    } else {
+        res.status(404).json({ message: 'No products found for the specified search criteria' });
+    }
 });
 
 // GET a single product by ID
@@ -51,7 +54,11 @@ router.get('/:id', (req, res) => {
     });
 
     // Return the product as a JSON response
-    res.json(product);
+    if (product) {
+        res.status(200).json(product);
+    } else {
+        res.status(404).json({ message: 'Product not found' });
+    }
 });
 
 // POST a new product
@@ -85,7 +92,7 @@ router.post('/', (req, res) => {
     fs.writeFileSync(productsFilePath, JSON.stringify(products));
 
     // Return a success message as a JSON response
-    res.json({ message: 'Product created successfully', product: newProduct });
+    res.status(201).json({ message: 'Product created successfully', product: newProduct });
 });
 
 // PUT (update) an existing product by ID
@@ -104,69 +111,9 @@ router.put('/:id', (req, res) => {
     fs.writeFileSync(productsFilePath, JSON.stringify(updatedProduct));
 
     // Return the updated product as a JSON response
-    res.json({ message: 'Product updated successfully', product: updatedProduct });
+    res.status(200).json({ message: 'Product updated successfully', product: updatedProduct });
 
 });
-
   module.exports = router;
 
 
-/**
-   * @swagger
- * components:
- *   schemas:
- *     Product:
- *       type: object
- *       properties:
- *         productId:
- *           type: integer
- *           description: Unique identifier for the product
- *           example: 1
- *         productName:
- *           type: string
- *           description: Name of the product
- *           example: nam tristique tortor eu pede
- *         productOwnerName:
- *           type: string
- *           description: Name of the product owner
- *           example: Irina Goodenough
- *         Developers:
- *           type: array
- *           items:
- *             type: string
- *           description: List of developers working on the product
- *           example: ["Espinoza Owens", "Curry Bauer", "Louise Sosa", "Delgado Kelley", "Adrienne Nunez"]
- *         scrumMasterName:
- *           type: string
- *           description: Name of the scrum master for the product
- *           example: Gibb Founds
- *         startDate:
- *           type: string
- *           description: Start date of the product
- *           example: 2022/07/16
- *         methodology:
- *           type: string
- *           description: Development methodology used for the product
- *           example: Waterfall
- *
- *
- * @swagger
- * tags:
- *  name: Products
- *  description: The products managing API
- * /products:
- *  get:
- *      summary: Returns the list of all the products
- *      tags: [Products]
- *      responses:
- *          '200':
- *              description: The list of the products
- *              content:
- *                  application/json:
- *                      schema:
- *                          type: array
- *                          items:
- *                              $ref: '#/components/schemas/Product'
- *          '500':
- *              description: Some server error
-  */
