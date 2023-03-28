@@ -1,5 +1,5 @@
 const express = require('express');
-const swagger = require('./swagger');
+const swagger = require('./swagger/swagger');
 const bodyParser = require('body-parser');
 const app = express();
 
