@@ -3,6 +3,7 @@ const swagger = require('./swagger');
 const app = express();
 const products = require('./routes/products');
 
+
 app.get('/', (_req, res) => {
   res.send('Hello, world!');
 });

@@ -1,19 +1,26 @@
 const express = require('express');
 const router = express.Router();
+// const db = require('../data/lowdb');
+const fs = require('fs');
+const productsFile = fs.readFileSync('/Users/brynfrayne/Documents/Web-Development/Bryn-Frayne-IS24-full-stack-competition-req97073/server/data/mergedData.json');
+const products = JSON.parse(productsFile);
 
 // GET all products
 router.get('/', (req, res) => {
     // Retrieve all products from the database
     // Return the list of products as a JSON response
-    // res.json(products);
-    res.send('Hello, world! Here are the products')
+    res.json(products);
   });
 
   // GET a single product by ID
   router.get('/:id', (req, res) => {
-    const productId = req.params.id;
+    const productId = parseInt(req.params.id);
+    console.log(productId);
     // Retrieve the product from the database using the product ID
     // Return the product as a JSON response
+    const product = products.find((product) => {
+        if (product.productId === productId) return product;
+    });
     res.json(product);
   });
 
