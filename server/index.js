@@ -1,8 +1,11 @@
 const express = require('express');
 const swagger = require('./swagger');
+const bodyParser = require('body-parser');
 const app = express();
-const products = require('./routes/products');
 
+app.use(bodyParser.json()); 
+
+const products = require('./routes/products');
 
 app.get('/', (_req, res) => {
   res.send('Hello, world!');

@@ -598,5 +598,20 @@
         "scrumMasterName": "Gib Woodhead",
         "startDate": "2023/02/24",
         "methodology": "Waterfall"
+    },
+    {
+        "productId": 41,
+        "productName": "The new product",
+        "productOwnerName": "Bryn Goodenough",
+        "Developers": [
+            "Espinoza Owens",
+            "Curry Bauer",
+            "Louise Sosa",
+            "Delgado Kelley",
+            "Adrienne Nunez"
+        ],
+        "scrumMasterName": "Gibb Founds",
+        "startDate": "2022/07/16",
+        "methodology": "Waterfall"
     }
 ]

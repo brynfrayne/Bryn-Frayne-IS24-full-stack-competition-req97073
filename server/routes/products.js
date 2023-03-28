@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-const productsFile = fs.readFileSync('/Users/brynfrayne/Documents/Web-Development/Bryn-Frayne-IS24-full-stack-competition-req97073/server/data/mergedData.json');
+const { validateProductFields, updateProductIfMatch, generateNewProductId } = require('../utils/validationUtils');
+const productsFilePath = '/Users/brynfrayne/Documents/Web-Development/Bryn-Frayne-IS24-full-stack-competition-req97073/server/data/mergedData.json';
+const productsFile = fs.readFileSync(productsFilePath, 'utf8');
 
 
 // GET all products
@@ -28,19 +30,56 @@ router.get('/', (req, res) => {
 
   // POST a new product
   router.post('/', (req, res) => {
-    const newProduct = req.body;
-    // Create a new product in the database using the data in newProduct
-    // Return the newly created product as a JSON response
-    res.json(createdProduct);
+
+    // Check that the request body contains all the required fields
+    const validationResult = validateProductFields(req.body);
+
+    // If the validation failed, return an error message as a JSON response
+    if (!validationResult.success) {
+        return res.status(400).json({ message: validationResult.message });
+    }
+
+    // Create a productId which does not collide with any existing product IDs
+    const products = JSON.parse(productsFile);
+    const newProductId = generateNewProductId(products);
+
+    // Create a new product object
+    const newProduct = {
+        productId: newProductId,
+        productName,
+        productOwnerName,
+        Developers,
+        scrumMasterName,
+        startDate,
+        methodology
+    };
+
+    // Add the new product to the database
+    products.push(newProduct);
+    fs.writeFileSync(productsFilePath, JSON.stringify(products));
+
+    // Return a success message as a JSON response
+    res.json({ message: 'Product created successfully', product: newProduct });
   });
 
   // PUT (update) an existing product by ID
   router.put('/:id', (req, res) => {
     const productId = req.params.id;
-    const updatedProduct = req.body;
+    const validationResult = validateProductFields(req.body);
+
+    // If the validation failed, return an error message as a JSON response
+    if (!validationResult.success) {
+        return res.status(400).json({ message: validationResult.message });
+    }
+
     // Update the product in the database using the data in updatedProduct and the product ID
+    const products = JSON.parse(productsFile);
+    const updatedProduct = products.map((product) => updateProductIfMatch(product, productId, req.body));
+    fs.writeFileSync(productsFilePath, JSON.stringify(updatedProduct));
+
     // Return the updated product as a JSON response
-    res.json(updatedProduct);
+    res.json({ message: 'Product updated successfully', product: updatedProduct });
+
   });
 
   module.exports = router;
