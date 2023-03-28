@@ -16,21 +16,6 @@ router.get('/', (req, res) => {
     res.json(products);
   });
 
-// GET a single product by ID
-router.get('/:id', (req, res) => {
-
-    const products = JSON.parse(productsFile);
-    const productId = parseInt(req.params.id);
-
-    // Retrieve the product from the database using the product ID
-    const product = products.find((product) => {
-        if (product.productId === productId) return product;
-    });
-
-    // Return the product as a JSON response
-    res.json(product);
-});
-
 // GET a list of products by scrum master name or developer name
 router.get('/search', (req, res) => {
     console.log('searching');
@@ -52,7 +37,22 @@ router.get('/search', (req, res) => {
 
     // Return the filtered products as a JSON response
     res.json(filteredProducts);
-  });
+});
+
+// GET a single product by ID
+router.get('/:id', (req, res) => {
+
+    const products = JSON.parse(productsFile);
+    const productId = parseInt(req.params.id);
+
+    // Retrieve the product from the database using the product ID
+    const product = products.find((product) => {
+        if (product.productId === productId) return product;
+    });
+
+    // Return the product as a JSON response
+    res.json(product);
+});
 
 // POST a new product
 router.post('/', (req, res) => {
