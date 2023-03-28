@@ -8,14 +8,17 @@ const productsFile = fs.readFileSync(productsFilePath, 'utf8');
 
 // GET all products
 router.get('/', (req, res) => {
+
     // Retrieve all products from the database
     const products = JSON.parse(productsFile);
+
     // Return the list of products as a JSON response
     res.json(products);
   });
 
-  // GET a single product by ID
-  router.get('/:id', (req, res) => {
+// GET a single product by ID
+router.get('/:id', (req, res) => {
+
     const products = JSON.parse(productsFile);
     const productId = parseInt(req.params.id);
 
@@ -26,10 +29,33 @@ router.get('/', (req, res) => {
 
     // Return the product as a JSON response
     res.json(product);
+});
+
+// GET a list of products by scrum master name or developer name
+router.get('/search', (req, res) => {
+    console.log('searching');
+    console.log(req.query);
+    const products = JSON.parse(productsFile);
+    const { name, role } = req.query;
+
+    // Check if role is specified and filter products based on the role
+    const filteredProducts = products.filter((product) => {
+      if (role === 'scrum master') {
+        return product.scrumMasterName === name;
+      } else if (role === 'developer') {
+        return product.Developers.includes(name);
+      } else {
+        // If role is not specified, filter based on both scrum master and developer
+        return product.scrumMasterName === name || product.Developers.includes(name);
+      }
+    });
+
+    // Return the filtered products as a JSON response
+    res.json(filteredProducts);
   });
 
-  // POST a new product
-  router.post('/', (req, res) => {
+// POST a new product
+router.post('/', (req, res) => {
 
     // Check that the request body contains all the required fields
     const validationResult = validateProductFields(req.body);
@@ -60,10 +86,10 @@ router.get('/', (req, res) => {
 
     // Return a success message as a JSON response
     res.json({ message: 'Product created successfully', product: newProduct });
-  });
+});
 
-  // PUT (update) an existing product by ID
-  router.put('/:id', (req, res) => {
+// PUT (update) an existing product by ID
+router.put('/:id', (req, res) => {
     const productId = req.params.id;
     const validationResult = validateProductFields(req.body);
 
@@ -74,13 +100,13 @@ router.get('/', (req, res) => {
 
     // Update the product in the database using the data in updatedProduct and the product ID
     const products = JSON.parse(productsFile);
-    const updatedProduct = products.map((product) => updateProductIfMatch(product, productId, req.body));
+    const updatedProduct = products.map((product) => updateProductIfMatch(product, parseInt(productId), req.body));
     fs.writeFileSync(productsFilePath, JSON.stringify(updatedProduct));
 
     // Return the updated product as a JSON response
     res.json({ message: 'Product updated successfully', product: updatedProduct });
 
-  });
+});
 
   module.exports = router;
 

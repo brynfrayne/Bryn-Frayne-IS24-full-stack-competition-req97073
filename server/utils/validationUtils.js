@@ -28,6 +28,7 @@ function validateProductFields(product) {
   }
 
   function updateProductIfMatch(product, productId, data) {
+    console.log(typeof product.productId, typeof productId)
     if (product.productId === productId) {
       return {
         ...product,
