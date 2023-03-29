@@ -3,7 +3,6 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import './App.css';
 import ProductTable from './components/ProductTable/ProductTable';
 import SearchBar from './components/SearchBar/SearchBar';
-import {Button} from 'react-bootstrap';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -13,7 +12,6 @@ function App() {
   useEffect(() => {
     axios.get('http://localhost:8000/api/products')
       .then((response) => {
-        console.log(response.data);
         setProducts(response.data);
       })
       .catch((error) => {

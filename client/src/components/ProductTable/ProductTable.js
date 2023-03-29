@@ -14,18 +14,11 @@ function ProductTable({ products }) {
     setShowEditModal(true);
   };
 
-
-  const handleEdit = (event) => {
-    event.preventDefault();
-    // handle form submit here
-  };
-
   return (
     <>
       <Table striped bordered hover>
         <thead>
           <tr>
-            {/* <th>Product ID</th> */}
             <th>Product Name</th>
             <th>Product Owner</th>
             <th>Developers</th>
@@ -49,9 +42,9 @@ function ProductTable({ products }) {
       {selectedProduct ? (
       <EditProductModal
         show={showEditModal}
+        setShow={setShowEditModal}
         onHide={handleClose}
         product={selectedProduct}
-        onSubmit={handleEdit}
       />
       ) : null}
     </>
