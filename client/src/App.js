@@ -1,10 +1,29 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import './App.css';
-import Table from './components/Table';
+import ProductTable from './components/ProductTable/ProductTable';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
 
 function App() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/products')
+      .then((response) => {
+        console.log(response.data);
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+
+
   return (
     <div className="App">
-      <Table />
+      <ProductTable products={products} />
     </div>
   );
 }
