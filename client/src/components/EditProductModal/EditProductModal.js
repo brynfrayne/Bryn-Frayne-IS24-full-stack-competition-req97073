@@ -3,7 +3,7 @@ import EditForm from '../EditForm/EditForm';
 import { Modal } from 'react-bootstrap';
 
 
-function EditProductModal({ setShow, show, onHide, product }) {
+function EditProductModal({ setShow, show, onHide, product, handleProductUpdate }) {
 
     return (
       <Modal show={show} onHide={onHide}>
@@ -15,6 +15,7 @@ function EditProductModal({ setShow, show, onHide, product }) {
           <EditForm
             product={product}
             setShow={setShow}
+            handleProductUpdate={handleProductUpdate}
           />}
         </Modal.Body>
         </Modal>

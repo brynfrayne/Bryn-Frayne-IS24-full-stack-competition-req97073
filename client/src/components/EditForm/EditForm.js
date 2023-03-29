@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
 
-function EditForm({ product, setShow }) {
+function EditForm({ product, setShow, handleProductUpdate }) {
   const [productName, setProductName] = useState(product.productName);
   const [productOwnerName, setProductOwnerName] = useState(product.productOwnerName);
   const [developers, setDevelopers] = useState(product.Developers);
@@ -20,17 +20,7 @@ function EditForm({ product, setShow }) {
         scrumMasterName,
         methodology,
       };
-    setSubmitted(false);
-
-    axios.put(`http://localhost:8000/api/products/${product.productId}`, editedProduct)
-        .then((response) => {
-            console.log(response);
-            }
-        )
-        .catch((error) => {
-            console.log(error);
-        }
-    );
+    handleProductUpdate(editedProduct);
     setShow(false);
     };
 

@@ -3,10 +3,10 @@ import { useState } from 'react';
 import ProductRow from '../ProductRow/ProductRow';
 import EditProductModal from '../EditProductModal/EditProductModal';
 
-function ProductTable({ products }) {
+function ProductTable({ products, handleProductUpdate }) {
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-
+  console.log('ProductTable: ', products);
   const handleClose = () => setShowEditModal(false);
 
   const handleShow = (product) => {
@@ -45,6 +45,7 @@ function ProductTable({ products }) {
         setShow={setShowEditModal}
         onHide={handleClose}
         product={selectedProduct}
+        handleProductUpdate={handleProductUpdate}
       />
       ) : null}
     </>
