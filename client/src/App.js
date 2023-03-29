@@ -2,6 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import './App.css';
 import ProductTable from './components/ProductTable/ProductTable';
+import SearchBar from './components/SearchBar/SearchBar';
+import {Button} from 'react-bootstrap';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -23,6 +25,8 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Product List</h1>
+        <SearchBar />
       <ProductTable products={products} />
     </div>
   );
