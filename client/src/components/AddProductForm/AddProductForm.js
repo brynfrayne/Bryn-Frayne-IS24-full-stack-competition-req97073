@@ -21,8 +21,8 @@ function AddProductForm({ setShow, handleProductAdd }) {
             productOwnerName,
             Developers: developers,
             scrumMasterName,
-            methodology,
-            startDate: convertDate(startDate)
+            startDate: convertDate(startDate),
+            methodology
         };
         console.log(newProduct);
         handleProductAdd(newProduct);

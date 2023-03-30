@@ -66,6 +66,8 @@ router.post('/', (req, res) => {
 
     // Check that the request body contains all the required fields
     const validationResult = validateProductFields(req.body);
+    const { productName, productOwnerName, Developers, scrumMasterName, startDate, methodology } = req.body;
+    console.log(req.body)
 
     // If the validation failed, return an error message as a JSON response
     if (!validationResult.success) {
