@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const { validateProductFields, updateProductIfMatch, generateNewProductId } = require('../utils/validationUtils');
-const productsFilePath = '/Users/brynfrayne/Documents/Web-Development/Bryn-Frayne-IS24-full-stack-competition-req97073/server/data/mergedData.json';
+const productsFilePath = '/Users/brynfrayne/Documents/Web-Development/Bryn-Frayne-IS24-full-stack-competition-req97073/server/data/product_list.json';
 const productsFile = fs.readFileSync(productsFilePath, 'utf8');
 
 

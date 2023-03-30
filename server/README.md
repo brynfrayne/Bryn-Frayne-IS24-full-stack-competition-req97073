@@ -43,6 +43,6 @@ The server provides the following endpoints:
 - `index.js`: Main file that sets up the Express app and defines the routes
 - `routes/products.js`: File that defines the route handlers for the `/api/products` endpoints
 - `utils/validationUtils.js`: File that contains utility functions for validating product fields and generating new product IDs
-- `data/mergedData.json`: File that stores the list of products as a JSON array
+- `data/product_list.json`: File that stores the list of products as a JSON array
 - `swagger/swagger.js`: File that sets up Swagger documentation for the API
 - `swagger/swagger_products.js`: File that defines the Swagger documentation for the `/api/products` endpoints
