@@ -598,34 +598,5 @@
         "scrumMasterName": "Gib Woodhead",
         "startDate": "2023/02/24",
         "methodology": "Waterfall"
-    },
-    {
-        "productId": 41,
-        "productName": "The newer product",
-        "productOwnerName": "Bryn Frayne",
-        "Developers": [
-            "Espinoza Owens",
-            "Curry Bauer",
-            "Louise Sosa",
-            "Delgado Kelley",
-            "Adrienne Nunez"
-        ],
-        "scrumMasterName": "Gibb Founds",
-        "startDate": "2022/07/16",
-        "methodology": "Waterfall"
-    },
-    {
-        "productId": 42,
-        "productName": "Bryn Frayne",
-        "productOwnerName": "Bryn Frayne",
-        "Developers": [
-            "Bryn",
-            "Bryn",
-            "Bryn",
-            "Bryn"
-        ],
-        "scrumMasterName": "Bryn",
-        "startDate": "2023/12/31",
-        "methodology": "Agile"
     }
 ]

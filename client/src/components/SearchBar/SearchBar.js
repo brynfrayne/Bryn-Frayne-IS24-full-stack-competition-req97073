@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import { Button } from 'react-bootstrap';
 
 function SearchBar({ handleProductSearch }) {
   const [position, setPosition] = useState('Any');
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Function to handle the search button click
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log('Search for', searchQuery, 'in', position);
     handleProductSearch(searchQuery, position);
   };
 
