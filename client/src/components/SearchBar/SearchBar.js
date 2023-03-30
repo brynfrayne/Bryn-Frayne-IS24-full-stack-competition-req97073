@@ -22,7 +22,7 @@ function SearchBar({ handleProductSearch, fetchData, failedSearch, setFailedSear
     }
 
     return () => clearTimeout(timeoutId);
-  }, [failedSearch]);
+  }, [failedSearch, setFailedSearch]);
 
   // Function to handle the search button click
   const onSubmit = (event) => {
@@ -78,7 +78,7 @@ function SearchBar({ handleProductSearch, fetchData, failedSearch, setFailedSear
           </button>
         </div>
         {showNoResultsMessage && (
-          <div className='alert alert-danger' role="alert">
+          <div className='my-3 alert alert-danger' role="alert">
             No results found.
           </div>
         )}
