@@ -11,6 +11,8 @@ function EditForm({ product, setShow, handleProductUpdate }) {
 
   // Function to handle the confirm button click
   const handleConfirm = () => {
+
+    // new product object with the old values, and new values overwriting the old values
     const editedProduct = {
         ...product,
         productName,
