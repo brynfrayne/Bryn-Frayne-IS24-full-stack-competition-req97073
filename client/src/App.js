@@ -71,6 +71,7 @@ function App() {
     }
     catch (error) {
       console.log(error);
+      // if the search fails, the failedSearch state is set to true and the error message is displayed
       setFailedSearch(true);
     }
   };

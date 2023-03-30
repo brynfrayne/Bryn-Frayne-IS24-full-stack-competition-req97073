@@ -8,14 +8,16 @@ function SearchBar({ handleProductSearch, fetchData, failedSearch, setFailedSear
 
   useEffect(() => {
     let timeoutId;
-    console.log('failedSearch', failedSearch);
 
+    // If the search failed, show the no results message for 2 seconds
     if (failedSearch) {
       setShowNoResultsMessage(true);
       timeoutId = setTimeout(() => {
+        // After 2 seconds, set the failedSearch state to false
         setFailedSearch(false);
       }, 2000);
     } else {
+      // After failedSearch is set to false, hide the no results message
       setShowNoResultsMessage(false);
     }
 
@@ -29,6 +31,7 @@ function SearchBar({ handleProductSearch, fetchData, failedSearch, setFailedSear
     handleProductSearch(searchQuery, position);
   };
 
+  // clears the state of the search bar after clicking the back button & fetches all products
   const handleClearSearch = () => {
     setPosition('Any');
     setSearchQuery('');
