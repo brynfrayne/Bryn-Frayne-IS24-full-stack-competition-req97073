@@ -62,7 +62,8 @@ nodemon index.js
 
 ## API Documentation
 
-All API endpoints originate from http://localhost:3000/api. The Swagger documentation for these endpoints is available at http://localhost:3000/api/api-docs.
+All API endpoints originate from http://localhost:3000/api.
+Once the server is running, the Swagger documentation for these endpoints is available at http://localhost:3000/api/api-docs.
 
 ## Sample Data
 
