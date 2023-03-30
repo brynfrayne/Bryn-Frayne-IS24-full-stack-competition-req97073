@@ -27,6 +27,7 @@ npm install
 ```
 npm start
 ```
+5. Open your web browser and navigate to http://localhost:3001 to view the application.
 
 ### Usage
 
