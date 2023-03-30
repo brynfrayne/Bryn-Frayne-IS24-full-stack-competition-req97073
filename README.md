@@ -31,7 +31,7 @@ git clone https://github.com/brynfrayne/Bryn-Frayne-IS24-full-stack-competition-
 ### Client Side Installation
 1. Navigate to the client directory
 ```
-cd YOUR-REPOSITORY/client
+cd YOUR-REPOSITORY/Bryn-Frayne-IS24-full-stack-competition-req97073/client
 ```
 2. Install dependencies using `npm install`
 ```
@@ -41,10 +41,11 @@ npm install
 ```
 npm start
 ```
+4. Open your web browser and navigate to http://localhost:3001 to view the application.
 ### Server Side Installation
 1. Navigate to the server directory
 ```
-cd YOUR-REPOSITORY/server
+cd YOUR-REPOSITORY/Bryn-Frayne-IS24-full-stack-competition-req97073/server
 ```
 2. Run `npm install` to install dependencies
 ```

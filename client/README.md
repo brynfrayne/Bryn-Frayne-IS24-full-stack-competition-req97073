@@ -17,7 +17,7 @@ git clone https://github.com/brynfrayne/Bryn-Frayne-IS24-full-stack-competition-
 ```
 2. Navigate to the client directory
 ```
-cd YOUR-REPOSITORY/client
+cd YOUR-REPOSITORY/Bryn-Frayne-IS24-full-stack-competition-req97073/client
 ```
 3. Install dependencies using `npm install`
 ```
