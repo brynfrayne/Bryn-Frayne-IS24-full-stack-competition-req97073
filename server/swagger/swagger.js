@@ -6,9 +6,9 @@ const options = {
   swaggerDefinition: {
     openapi: '3.0.0',
     info: {
-      title: 'Your API Documentation',
+      title: 'IMB Full Stack Code Challenge API Documentation',
       version: '1.0.0',
-      description: 'A sample API documentation',
+      description: 'API documentation for the IMB Full Stack Code Challenge',
     },
     servers: [
       {
