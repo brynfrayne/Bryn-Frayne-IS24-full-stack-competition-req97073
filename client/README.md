@@ -30,10 +30,10 @@ npm start
 
 ### Usage
 
-- Enter search criteria in the search bar to search for specific products
+- The landing page showcases a list of all IMB products by default
+- Enter search criteria in the search bar to search for specific specific developers or scrum masters
 - Click the "Add Product" button to add a new product
 - Edit products by clicking the "Edit" button in the product table
-- Delete products by clicking the "Delete" button in the product table
 
 ## Built With
 
