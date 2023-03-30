@@ -68,7 +68,7 @@ Once the server is running, the Swagger documentation for these endpoints is ava
 
 ## Sample Data
 
-I used a random generator to create a JSON object of 40 products with the required information.
+I used a random generator to create a JSON array of 40 products with the required information.
 
 ## Contact
 
