@@ -28,7 +28,7 @@ To run this application on your local development machine, you will need Node.js
 ```
 git clone https://github.com/brynfrayne/Bryn-Frayne-IS24-full-stack-competition-req97073.git
 ```
-# Server Side Installation
+### Server Side Installation
 1. Run `npm install` to install dependencies
 ```
 npm install
