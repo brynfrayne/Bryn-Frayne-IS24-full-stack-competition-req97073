@@ -6,7 +6,6 @@ import EditProductModal from '../EditProductModal/EditProductModal';
 function ProductTable({ products, handleProductUpdate }) {
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  console.log('ProductTable: ', products);
   const handleClose = () => setShowEditModal(false);
 
   const handleShow = (product) => {
