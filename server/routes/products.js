@@ -20,7 +20,9 @@ router.get('/', (req, res) => {
 router.get('/search', (req, res) => {
 
     const products = JSON.parse(productsFile);
+    console.log(req.query);
     const { name, role } = req.query;
+
 
     // Check if role is specified and filter products based on the role
     const filteredProducts = products.filter((product) => {

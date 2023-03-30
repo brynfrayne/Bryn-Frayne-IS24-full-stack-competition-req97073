@@ -13,6 +13,8 @@ function App() {
   const [products, setProducts] = useState([]);
   const [isProductUpdated, setIsProductUpdated] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
+  const handleClick = () => setShowAddModal(true);
+  const handleClose = () => setShowAddModal(false);
 
   const fetchData = async () => {
     try {
@@ -40,11 +42,6 @@ function App() {
     }
   };
 
-  const handleClick = () => setShowAddModal(true);
-  const handleClose = () => setShowAddModal(false);
-
-
-
   const handleProductAdd = async (productToAdd) => {
     try {
       const response = await axios.post('http://localhost:8000/api/products', productToAdd);
@@ -61,6 +58,17 @@ function App() {
     }
   };
 
+  const handleProductSearch = async (name, role) => {
+    try {
+      const response = await axios.get(`http://localhost:8000/api/products/search?name=${name}&role=${role}`);
+      setProducts(response.data);
+    }
+    catch (error) {
+      console.log(error);
+    }
+  };
+
+
   useEffect(() => {
     fetchData();
   }, [isProductUpdated]);
@@ -69,7 +77,7 @@ function App() {
     <>
     <div className="App">
       <h1>Product List</h1>
-      <SearchBar />
+      <SearchBar handleProductSearch={handleProductSearch} />
       <Button variant="primary" onClick={handleClick} className="mb-3">
         Add Product
       </Button>

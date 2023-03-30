@@ -1,29 +1,51 @@
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { useState } from 'react';
+import { Button } from 'react-bootstrap';
 
-function SearchBar(props) {
-  const { value, onChange, onSubmit, onSelect } = props;
+function SearchBar({ handleProductSearch }) {
+  const [position, setPosition] = useState('Any');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    console.log('Search for', searchQuery, 'in', position);
+    handleProductSearch(searchQuery, position);
+  };
 
   return (
-    <Form onSubmit={onSubmit} className="w-25 mx-auto mb-3">
-      <Form.Group as={Row} className="mb-3 align-items-center" controlId="formPosition">
-        <Form.Label column sm={4} className="text-end">Search by position:</Form.Label>
-        <Col sm={8}>
-          <Form.Select aria-label="Select developer or scrum master" value={value} onChange={onSelect} className="w-auto">
+    <form onSubmit={onSubmit} className="w-25 mx-auto mb-3">
+      <div className="mb-3 row align-items-center" id="formPosition">
+        <label htmlFor="positionSelect" className="col-sm-4 text-end">Search by position:</label>
+        <div className="col-sm-8">
+          <select
+            id="positionSelect"
+            aria-label="Select developer or scrum master"
+            value={position}
+            className="form-select w-auto"
+            onChange={(event) => setPosition(event.target.value)}
+          >
             <option value="">Any</option>
             <option value="Developer">Developer</option>
             <option value="Scrum Master">Scrum Master</option>
-          </Form.Select>
-        </Col>
-      </Form.Group>
-      <Row className="align-items-center">
-        <Col sm={8} className="pe-2">
-          <Form.Control type="search" placeholder="Search for individual" value={value} onChange={onChange} className="w-100" />
-        </Col>
-        <Col sm={4} className="px-0">
-          <Button type="submit" variant="primary" className="w-100">Search</Button>
-        </Col>
-      </Row>
-    </Form>
+          </select>
+        </div>
+      </div>
+      <div className="row align-items-center">
+        <div className="col-sm-8 pe-2">
+          <input
+            type="search"
+            placeholder="Search for individual"
+            value={searchQuery}
+            className="form-control w-100"
+            onChange={(event) => setSearchQuery(event.target.value)}
+          />
+        </div>
+        <div className="col-sm-4 px-0">
+          <button type="submit" className="btn btn-primary w-100" onClick={onSubmit}>
+            Search
+          </button>
+        </div>
+      </div>
+    </form>
   );
 }
 
