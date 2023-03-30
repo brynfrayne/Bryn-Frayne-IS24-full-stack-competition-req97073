@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
+// import 'bootstrap/dist/js/bootstrap.min.js';
 import './App.css';
 import ProductTable from './components/ProductTable/ProductTable';
 import SearchBar from './components/SearchBar/SearchBar';
@@ -13,6 +13,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [isProductUpdated, setIsProductUpdated] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [failedSearch, setFailedSearch] = useState(false);
   const handleClick = () => setShowAddModal(true);
   const handleClose = () => setShowAddModal(false);
   const apiUrl = 'http://localhost:3000/api/products';
@@ -20,11 +21,7 @@ function App() {
   // get request to fetch all products
   const fetchData = async () => {
     try {
-      console.log('fetching data');
-      console.log(products)
       const response = await axios.get(apiUrl);
-      console.log(response.data);
-      console.log(response.data === products);
       setProducts(response.data);
     }
     catch (error) {
@@ -74,9 +71,9 @@ function App() {
     }
     catch (error) {
       console.log(error);
+      setFailedSearch(true);
     }
   };
-
 
   useEffect(() => {
     fetchData();
@@ -86,7 +83,12 @@ function App() {
     <>
     <div className="App">
       <h1>IMB Product List</h1>
-      <SearchBar handleProductSearch={handleProductSearch} />
+      <SearchBar
+            handleProductSearch={handleProductSearch}
+            fetchData={fetchData}
+            failedSearch={failedSearch}
+            setFailedSearch={setFailedSearch}
+            />
       <Button variant="primary" onClick={handleClick} className="mb-3">
         Add Product
       </Button>

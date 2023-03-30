@@ -1,13 +1,39 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-function SearchBar({ handleProductSearch }) {
+function SearchBar({ handleProductSearch, fetchData, failedSearch, setFailedSearch }) {
   const [position, setPosition] = useState('Any');
   const [searchQuery, setSearchQuery] = useState('');
+  const [searched, setSearched] = useState(false);
+  const [showNoResultsMessage, setShowNoResultsMessage] = useState(false);
+
+  useEffect(() => {
+    let timeoutId;
+    console.log('failedSearch', failedSearch);
+
+    if (failedSearch) {
+      setShowNoResultsMessage(true);
+      timeoutId = setTimeout(() => {
+        setFailedSearch(false);
+      }, 2000);
+    } else {
+      setShowNoResultsMessage(false);
+    }
+
+    return () => clearTimeout(timeoutId);
+  }, [failedSearch]);
 
   // Function to handle the search button click
   const onSubmit = (event) => {
     event.preventDefault();
+    setSearched(true);
     handleProductSearch(searchQuery, position);
+  };
+
+  const handleClearSearch = () => {
+    setPosition('Any');
+    setSearchQuery('');
+    setSearched(false);
+    fetchData();
   };
 
   return (
@@ -32,17 +58,27 @@ function SearchBar({ handleProductSearch }) {
         <div className="col-sm-8 pe-2">
           <input
             type="search"
-            placeholder="Search for individual"
+            placeholder="Search for an individual"
             value={searchQuery}
             className="form-control w-100"
             onChange={(event) => setSearchQuery(event.target.value)}
           />
         </div>
         <div className="col-sm-4 px-0">
+        {searched && (
+            <button type="button" className="btn btn-secondary w-100 my-3" onClick={handleClearSearch}>
+              Back
+            </button>
+          )}
           <button type="submit" className="btn btn-primary w-100" onClick={onSubmit}>
             Search
           </button>
         </div>
+        {showNoResultsMessage && (
+          <div className='alert alert-danger' role="alert">
+            No results found.
+          </div>
+        )}
       </div>
     </form>
   );
