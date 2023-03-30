@@ -9,15 +9,15 @@ This is a React web application that displays a list of products fetched from a 
 - Node.js
 - NPM
 
-### Installing
+### Getting Started
 
 1. Clone the repository(if not already cloned as per the initial instructions)
 ```
 git clone https://github.com/brynfrayne/Bryn-Frayne-IS24-full-stack-competition-req97073.git
 ```
-2. Navigate to the client directory
+2. From the directory you cloned the application in, navigate to the client directory
 ```
-cd YOUR-REPOSITORY/Bryn-Frayne-IS24-full-stack-competition-req97073/client
+cd ./Bryn-Frayne-IS24-full-stack-competition-req97073/client
 ```
 3. Install dependencies using `npm install`
 ```

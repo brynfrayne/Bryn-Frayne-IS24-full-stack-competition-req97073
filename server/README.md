@@ -6,10 +6,13 @@ This server-side code uses Node.js and Express to provide a RESTful API for a pr
 
 To run the server:
 
-1. Install Node.js and NPM
-2. Clone the repository and navigate to the server directory
+1. Clone the repository(if not already cloned as per the initial instructions)
 ```
-cd YOUR-REPOSITORY/Bryn-Frayne-IS24-full-stack-competition-req97073/server
+git clone https://github.com/brynfrayne/Bryn-Frayne-IS24-full-stack-competition-req97073.git
+```
+2. From the directory you cloned the application in, navigate to the server directory
+```
+cd ./Bryn-Frayne-IS24-full-stack-competition-req97073/server
 ```
 3. Run `npm install` to install dependencies
 ```
