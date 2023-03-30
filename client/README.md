@@ -1,6 +1,6 @@
 # IMB Product List
 
-A web application that displays a list of products, allows users to search for products by name and role, and add new products to the list.
+This is a React web application that displays a list of products fetched from a RESTful API. It allows users to search for specific products, add new products, and update existing products.
 
 ## Getting Started
 
