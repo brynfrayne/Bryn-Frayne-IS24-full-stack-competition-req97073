@@ -7,8 +7,6 @@ This server-side code uses Node.js and Express to provide a RESTful API for a pr
 To run the server:
 
 1. Install Node.js and NPM
-```
-
 2. Clone the repository and navigate to the server directory
 ```
 cd YOUR-REPOSITORY/server
