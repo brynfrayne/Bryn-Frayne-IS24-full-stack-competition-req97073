@@ -28,20 +28,36 @@ To run this application on your local development machine, you will need Node.js
 ```
 git clone https://github.com/brynfrayne/Bryn-Frayne-IS24-full-stack-competition-req97073.git
 ```
-### Server Side Installation
-1. Run `npm install` to install dependencies
+### Client Side Installation
+1. Navigate to the client directory
+```
+cd YOUR-REPOSITORY/client
+```
+2. Install dependencies using `npm install`
 ```
 npm install
 ```
-2. Run `node index.js` or `nodemon index.js` to start the server
+3. Start the development server using `npm start`
+```
+npm start
+```
+### Server Side Installation
+1. Navigate to the server directory
+```
+cd YOUR-REPOSITORY/server
+```
+2. Run `npm install` to install dependencies
+```
+npm install
+```
+3. Run `node index.js` or `nodemon index.js` to start the server
 ```
 node index.js
 ```
 ```
 nodemon index.js
 ```
-3. The server will be available at http://localhost:3000/api
-
+4. The server will be available at http://localhost:3000/api
 
 ## API Documentation
 

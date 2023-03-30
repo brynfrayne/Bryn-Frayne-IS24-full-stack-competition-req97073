@@ -23,7 +23,7 @@ cd YOUR-REPOSITORY/client
 ```
 npm install
 ```
-3. Start the development server using `npm start`
+4. Start the development server using `npm start`
 ```
 npm start
 ```
