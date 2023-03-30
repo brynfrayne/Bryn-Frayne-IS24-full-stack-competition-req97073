@@ -55,17 +55,42 @@ function createDevList(file) {
   for (let i = 0; i < parsedFile.length; i++) {
     devList.push(parsedFile[i].Developers);
   }
-  return devList;
+  return devList.slice(0, 10).flat().slice(0,40)
+
 }
 
 // Assign developers to each product
 function assignDevs(file) {
   const parsedFile = readJSONFile(file);
+  // go through each product
   for (let i = 0; i < parsedFile.length; i++) {
-    parsedFile[i].Developers = tenDevs[i % 10];
+    const devList = createDevList(file);
+    // create an array of 5 developers
+    const projectDevs = [];
+    // go through each developer
+    for (let j = 0; j < 5; j++) {
+      // choose a random developer from the devList
+      const randomIndex = Math.floor(Math.random() * devList.length);
+      const randomDev = devList[randomIndex];
+      // add the developer to the projectDevs array
+      projectDevs.push(randomDev);
+      // remove the developer from the devList
+      devList.splice(randomIndex, 1);
+    }
+    parsedFile[i].Developers = projectDevs;
   }
   return parsedFile;
 }
+
+
+
+// function assignDevs(file) {
+//   const parsedFile = readJSONFile(file);
+//   for (let i = 0; i < parsedFile.length; i++) {
+//     parsedFile[i].Developers = tenDevs[i % 10];
+//   }
+//   return parsedFile;
+// }
 
 // Read the JSON files and merge the data
 // const products = readJSONFile('server/data/product_list.json');
@@ -80,7 +105,14 @@ function assignDevs(file) {
 // const assignedScrumMasters = assignScrumMaster('./server/data/mergedData.json');
 // writeJSONFile('./server/data/mergedData.json', assignedScrumMasters);
 
-const devList = createDevList('./server/data/mergedData.json');
-const tenDevs = devList.slice(0, 10);
-const assignedDevs = assignDevs('./server/data/mergedData.json');
-writeJSONFile('./server/data/mergedData.json', assignedDevs);
+
+// const assignedDevs = assignDevs('./server/data/mergedData.json');
+// writeJSONFile('./server/data/mergedData.json', assignedDevs);
+// const devList = createDevList('./server/data/mergedData.json');
+// const tenGroupsOfFiveDevs = devList.slice(0, 10);
+// console.log(tenGroupsOfFiveDevs.length, tenGroupsOfFiveDevs[0].length);
+// const fiftyDevs = tenGroupsOfFiveDevs.flat();
+// console.log(fiftyDevs.length);
+// console.log(fiftyDevs);
+// const assignedDevs = assignDevs('./server/data/mergedData.json');
+// writeJSONFile('./server/data/mergedData.json', assignedDevs);
