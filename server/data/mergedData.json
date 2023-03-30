@@ -1,7 +1,7 @@
 [
     {
         "productId": 1,
-        "productName": "nam tristique tortor eu pede",
+        "productName": "Bryn's 1st Product",
         "productOwnerName": "Irina Goodenough",
         "Developers": [
             "Espinoza Owens",
@@ -16,7 +16,7 @@
     },
     {
         "productId": 2,
-        "productName": "vel",
+        "productName": "Bryn's Best Product",
         "productOwnerName": "Hammad Gilluley",
         "Developers": [
             "Wong Britt",
@@ -31,7 +31,7 @@
     },
     {
         "productId": 3,
-        "productName": "quisque ut erat",
+        "productName": "Bryns Better Product",
         "productOwnerName": "Hanan Samett",
         "Developers": [
             "Pamela Rojas",

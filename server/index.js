@@ -1,8 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 const swagger = require('./swagger/swagger');
 const bodyParser = require('body-parser');
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 
 const products = require('./routes/products');

@@ -20,13 +20,16 @@ router.get('/', (req, res) => {
 router.get('/search', (req, res) => {
 
     const products = JSON.parse(productsFile);
+    console.log(req.query);
     const { name, role } = req.query;
+
 
     // Check if role is specified and filter products based on the role
     const filteredProducts = products.filter((product) => {
-      if (role === 'scrum master') {
+      if (name === '') return product;
+      if (role === 'Scrum Master') {
         return product.scrumMasterName === name;
-      } else if (role === 'developer') {
+      } else if (role === 'Developer') {
         return product.Developers.includes(name);
       } else {
         // If role is not specified, filter based on both scrum master and developer
@@ -66,6 +69,8 @@ router.post('/', (req, res) => {
 
     // Check that the request body contains all the required fields
     const validationResult = validateProductFields(req.body);
+    const { productName, productOwnerName, Developers, scrumMasterName, startDate, methodology } = req.body;
+    console.log(req.body)
 
     // If the validation failed, return an error message as a JSON response
     if (!validationResult.success) {
