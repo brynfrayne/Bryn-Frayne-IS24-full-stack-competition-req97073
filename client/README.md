@@ -11,7 +11,7 @@ A web application that displays a list of products, allows users to search for p
 
 ### Installing
 
-1. Clone the repository
+1. Clone the repository(if not already cloned as per the initial instructions)
 ```
 git clone https://github.com/brynfrayne/Bryn-Frayne-IS24-full-stack-competition-req97073.git
 ```
