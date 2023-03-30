@@ -16,7 +16,7 @@ app.get('/', (_req, res) => {
   res.send('Hello, world!');
 });
 
-const PORT = 8000;
+const PORT = 3000;
 
 swagger(app);
 

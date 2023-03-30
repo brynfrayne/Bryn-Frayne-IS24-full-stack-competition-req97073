@@ -15,11 +15,12 @@ function App() {
   const [showAddModal, setShowAddModal] = useState(false);
   const handleClick = () => setShowAddModal(true);
   const handleClose = () => setShowAddModal(false);
+  const apiUrl = 'http://localhost:3000/api/products';
 
   // get request to fetch all products
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/products');
+      const response = await axios.get(apiUrl);
       setProducts(response.data);
     }
     catch (error) {
@@ -30,7 +31,7 @@ function App() {
   // put request to update a product
   const handleProductUpdate = async (updatedProduct) => {
     try {
-      const response = await axios.put(`http://localhost:8000/api/products/${updatedProduct.productId}`, updatedProduct);
+      const response = await axios.put(`${apiUrl}/${updatedProduct.productId}`, updatedProduct);
       if (response.status === 200) {
         console.log('Product updated successfully');
         setTimeout(() => {
@@ -46,7 +47,7 @@ function App() {
   // post request to add a new product
   const handleProductAdd = async (productToAdd) => {
     try {
-      const response = await axios.post('http://localhost:8000/api/products', productToAdd);
+      const response = await axios.post('apiUrl', productToAdd);
       if (response.status === 201) {
         console.log('Product added successfully');
 
@@ -64,7 +65,7 @@ function App() {
   // get request to search for a specific developer or scrum master and the list of products they are associated with
   const handleProductSearch = async (name, role) => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/products/search?name=${name}&role=${role}`);
+      const response = await axios.get(`${apiUrl}/search?name=${name}&role=${role}`);
       setProducts(response.data);
     }
     catch (error) {
