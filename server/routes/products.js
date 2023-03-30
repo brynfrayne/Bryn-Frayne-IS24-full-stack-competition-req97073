@@ -26,9 +26,10 @@ router.get('/search', (req, res) => {
 
     // Check if role is specified and filter products based on the role
     const filteredProducts = products.filter((product) => {
-      if (role === 'scrum master') {
+      if (name === '') return product;
+      if (role === 'Scrum Master') {
         return product.scrumMasterName === name;
-      } else if (role === 'developer') {
+      } else if (role === 'Developer') {
         return product.Developers.includes(name);
       } else {
         // If role is not specified, filter based on both scrum master and developer
