@@ -65,7 +65,7 @@ function AddProductForm({ setShow, handleProductAdd }) {
         return (
           // If the submit button has not been clicked, render the submit button
           <Button variant="primary" type="submit" onClick={handleSubmit}>
-            Submit
+            Save
           </Button>
         );
       };

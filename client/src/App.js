@@ -20,7 +20,11 @@ function App() {
   // get request to fetch all products
   const fetchData = async () => {
     try {
+      console.log('fetching data');
+      console.log(products)
       const response = await axios.get(apiUrl);
+      console.log(response.data);
+      console.log(response.data === products);
       setProducts(response.data);
     }
     catch (error) {
@@ -36,7 +40,7 @@ function App() {
         console.log('Product updated successfully');
         setTimeout(() => {
           setIsProductUpdated(!isProductUpdated);
-        }, 1000);
+        }, 1500);
       }
     }
     catch (error) {
@@ -81,11 +85,12 @@ function App() {
   return (
     <>
     <div className="App">
-      <h1>Product List</h1>
+      <h1>IMB Product List</h1>
       <SearchBar handleProductSearch={handleProductSearch} />
       <Button variant="primary" onClick={handleClick} className="mb-3">
         Add Product
       </Button>
+      <p>Total Number of Products: {products.length}</p>
       <ProductTable products={products} handleProductUpdate={handleProductUpdate} />
     </div>
 

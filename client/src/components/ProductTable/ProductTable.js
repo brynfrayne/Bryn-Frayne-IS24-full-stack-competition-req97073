@@ -18,10 +18,11 @@ function ProductTable({ products, handleProductUpdate }) {
       <Table striped bordered hover>
         <thead>
           <tr>
+            <th>Product Number</th>
             <th>Product Name</th>
+            <th>Scrum Master</th>
             <th>Product Owner</th>
             <th>Developers</th>
-            <th>Scrum Master</th>
             <th>Start Date</th>
             <th>Methodology</th>
             <th>Actions</th>

@@ -43,7 +43,7 @@ function EditForm({ product, setShow, handleProductUpdate }) {
     return (
       // If the submit button has not been clicked, render the submit button
       <Button variant="primary" type="submit" onClick={() => setSubmitted(true)}>
-        Submit
+        Save
       </Button>
     );
   };

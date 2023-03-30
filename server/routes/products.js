@@ -10,6 +10,7 @@ const productsFile = fs.readFileSync(productsFilePath, 'utf8');
 router.get('/', (req, res) => {
 
     // Retrieve all products from the database
+    const productsFile = fs.readFileSync(productsFilePath, 'utf8');
     const products = JSON.parse(productsFile);
 
     // Return the list of products as a JSON response
@@ -19,8 +20,8 @@ router.get('/', (req, res) => {
 // GET a list of products by scrum master name or developer name
 router.get('/search', (req, res) => {
 
+    const productsFile = fs.readFileSync(productsFilePath, 'utf8');
     const products = JSON.parse(productsFile);
-    console.log(req.query);
     const { name, role } = req.query;
 
 
@@ -48,6 +49,7 @@ router.get('/search', (req, res) => {
 // GET a single product by ID
 router.get('/:id', (req, res) => {
 
+    const productsFile = fs.readFileSync(productsFilePath, 'utf8');
     const products = JSON.parse(productsFile);
     const productId = parseInt(req.params.id);
 
@@ -70,7 +72,6 @@ router.post('/', (req, res) => {
     // Check that the request body contains all the required fields
     const validationResult = validateProductFields(req.body);
     const { productName, productOwnerName, Developers, scrumMasterName, startDate, methodology } = req.body;
-    console.log(req.body)
 
     // If the validation failed, return an error message as a JSON response
     if (!validationResult.success) {
@@ -78,6 +79,7 @@ router.post('/', (req, res) => {
     }
 
     // Create a productId which does not collide with any existing product IDs
+    const productsFile = fs.readFileSync(productsFilePath, 'utf8');
     const products = JSON.parse(productsFile);
     const newProductId = generateNewProductId(products);
 
@@ -111,6 +113,7 @@ router.put('/:id', (req, res) => {
     }
 
     // Update the product in the database using the data in updatedProduct and the product ID
+    const productsFile = fs.readFileSync(productsFilePath, 'utf8');
     const products = JSON.parse(productsFile);
     const updatedProduct = products.map((product) => updateProductIfMatch(product, parseInt(productId), req.body));
     fs.writeFileSync(productsFilePath, JSON.stringify(updatedProduct));
